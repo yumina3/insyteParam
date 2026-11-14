@@ -1,0 +1,191 @@
+/* ==========================================================================
+   Insyte Param Teknologi - Corporate Landing Page Styles
+   ========================================================================== */
+
+/* ---------- Root Variables ---------- */
+:root {
+  --brand-navy: #0B2447;
+  --brand-logonavy: #10305A;
+  --brand-steel: #4A84C4;
+  --brand-steel-hover: #3d72ac;
+  --brand-sky: #7FB0E6;
+  --brand-ice: #F3F7FC;
+  --brand-slate: #5B6B7F;
+  --brand-canvas: #EBF0F5;
+  --brand-border: #E2E8F0;
+}
+
+/* ---------- Base Typography & Smooth Scroll ---------- */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 85px;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: var(--brand-navy);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ---------- Sticky Navigation Bar ---------- */
+nav.scrolled {
+  box-shadow: 0 4px 20px -2px rgba(11, 36, 71, 0.08);
+  border-bottom-color: rgba(226, 232, 240, 0.9) !important;
+  background-color: rgba(255, 255, 255, 0.98);
+}
+
+/* ---------- Navigation Enhancements ---------- */
+.nav-link {
+  position: relative;
+  display: inline-block;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  color: var(--brand-slate);
+  font-weight: 500;
+  transition: color 0.2s ease, font-weight 0.2s ease;
+  cursor: pointer;
+}
+
+.nav-link:hover {
+  color: var(--brand-navy);
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2.5px;
+  bottom: -4px;
+  left: 0;
+  background-color: var(--brand-steel);
+  border-radius: 9999px;
+  transition: width 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+.nav-link.active {
+  color: var(--brand-steel) !important;
+  font-weight: 700 !important;
+}
+
+/* Mobile Navigation Dropdown */
+#mobile-menu {
+  transition: max-height 0.35s ease, opacity 0.3s ease;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+}
+
+#mobile-menu.open {
+  max-height: 450px;
+  opacity: 1;
+}
+
+.mobile-nav-link {
+  display: block;
+  color: var(--brand-slate);
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.mobile-nav-link:hover {
+  background-color: var(--brand-ice);
+  color: var(--brand-navy);
+}
+
+.mobile-nav-link.active {
+  background-color: var(--brand-ice) !important;
+  color: var(--brand-steel) !important;
+  font-weight: 700 !important;
+}
+
+/* ---------- FAQ Accordion Styles ---------- */
+.faq-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease, opacity 0.3s ease, padding 0.3s ease;
+  opacity: 0;
+}
+
+.faq-item.active .faq-content {
+  max-height: 200px;
+  opacity: 1;
+}
+
+.faq-icon {
+  transition: transform 0.3s ease;
+}
+
+.faq-item.active .faq-icon {
+  transform: rotate(180deg);
+}
+
+.faq-item.active {
+  border-color: rgba(74, 132, 196, 0.5) !important;
+  box-shadow: 0 4px 12px -2px rgba(11, 36, 71, 0.08);
+}
+
+/* ---------- Portfolio Filters ---------- */
+.portfolio-tab {
+  transition: all 0.25s ease;
+}
+
+.portfolio-tab.active {
+  background-color: var(--brand-steel) !important;
+  color: #ffffff !important;
+  font-weight: 700;
+}
+
+.portfolio-item {
+  transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
+}
+
+.portfolio-item:hover {
+  transform: translateY(-4px);
+}
+
+.portfolio-item.hidden-item {
+  display: none;
+}
+
+/* ---------- Pricing Toggle Animation ---------- */
+.pricing-btn {
+  transition: all 0.25s ease;
+}
+
+.pricing-btn.active {
+  background-color: var(--brand-steel);
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(74, 132, 196, 0.4);
+}
+
+/* ---------- Card Hover Effects ---------- */
+.hover-lift {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px -6px rgba(11, 36, 71, 0.12);
+}
+
+/* ---------- Scroll to Top Button ---------- */
+#scroll-to-top {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.2s ease;
+}
+
+#scroll-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+#scroll-to-top:hover {
+  transform: translateY(-2px);
+}

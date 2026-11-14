@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Insyte Param Teknologi - Corporate Landing Page</title>
+
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS v3 with Forms & Container Queries -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              navy: '#0B2447',
+              logonavy: '#10305A',
+              steel: '#4A84C4',
+              'steel-hover': '#3d72ac',
+              sky: '#7FB0E6',
+              ice: '#F3F7FC',
+              slate: '#5B6B7F',
+              canvas: '#EBF0F5',
+              border: '#E2E8F0',
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- ==========================================================================
+       GAYA VISUAL & ANIMASI: Section Industri (#industri)
+       ========================================================================== -->
+  <style>
+    /* Styling Dasar Kartu Industri */
+    .industri-card {
+      background-color: #ffffff;
+      border: 1px solid #E2E8F0;
+      border-radius: 20px;
+      box-shadow: 0 4px 20px -2px rgba(11, 36, 71, 0.05);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                  box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                  border-color 0.3s ease,
+                  opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+      opacity: 0;
+      transform: translateY(32px);
+      will-change: transform, opacity;
+    }
+
+    /* Efek Saat Kartu Muncul (Fade-in saat di-scroll) */
+    .industri-card.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Efek Hover: Kartu naik sedikit dan bayangan menguat */
+    .industri-card.is-visible:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 35px -8px rgba(11, 36, 71, 0.12);
+      border-color: rgba(74, 134, 197, 0.45);
+    }
+
+    /* Jeda bertahap per kartu (Staggered Animation Delay) */
+    .industri-card:nth-child(1) {
+      transition-delay: 0.1s;
+    }
+    .industri-card:nth-child(2) {
+      transition-delay: 0.25s;
+    }
+    .industri-card:nth-child(3) {
+      transition-delay: 0.4s;
+    }
+
+    /* Ikon Penanda Kelompok Besar di Atas Judul */
+    .group-icon-badge {
+      width: 56px;
+      height: 56px;
+      border-radius: 16px;
+      background-color: #EAF2FB;
+      color: #4A86C5;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+
+    .industri-card:hover .group-icon-badge {
+      transform: scale(1.06);
+      background-color: #dbeafc;
+    }
+
+    /* Ikon Garis Item Bulat Berlatar Biru Sangat Muda (#EAF2FB) */
+    .item-icon-box {
+      width: 36px;
+      height: 36px;
+      border-radius: 9999px;
+      background-color: #EAF2FB;
+      color: #4A86C5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background-color 0.25s ease, transform 0.25s ease, color 0.25s ease;
+    }
+
+    .industri-item:hover .item-icon-box {
+      background-color: #4A86C5;
+      color: #ffffff;
+      transform: scale(1.05);
+    }
+
+    .industri-item:hover .item-icon-box i,
+    .industri-item:hover .item-icon-box svg {
+      stroke: #ffffff !important;
+    }
+
+    /* Kurva Gelombang Tipis Pemisah Section */
+    .wave-divider {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      line-height: 0;
+    }
+
+    .wave-divider svg {
+      position: relative;
+      display: block;
+      width: 100%;
+      height: 48px;
+    }
+  </style>
+</head>
+<body class="bg-white text-brand-navy min-h-screen font-sans selection:bg-brand-steel selection:text-white">
+
+  <!-- ==========================================
+       1. Top Bar
+       ========================================== -->
+  <section class="border-b border-brand-border bg-white text-[12px] text-brand-slate px-6 lg:px-12 py-2.5 flex justify-between items-center w-full">
+    <div class="max-w-7xl mx-auto w-full flex justify-between items-center">
+      <div class="flex items-center gap-6">
+        <a href="tel:+6281234567890" class="flex items-center gap-1.5 font-medium hover:text-brand-steel transition-colors">
+          <i data-lucide="phone" class="w-3.5 h-3.5 text-brand-steel"></i>
+          +62 812-3456-7890
+        </a>
+        <span class="flex items-center gap-1.5 hidden sm:flex">
+          <i data-lucide="clock" class="w-3.5 h-3.5 text-brand-steel"></i>
+          Senin - Jumat, 08.00 - 17.00 WIB
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       2. Sticky Navigation Bar
+       ========================================== -->
+  <nav id="navbar" class="sticky top-0 z-50 bg-white/95 backdrop-blur-md px-6 lg:px-12 py-4 border-b border-gray-100 w-full transition-all duration-300">
+    <div class="max-w-7xl mx-auto w-full flex items-center justify-between">
+      <!-- Logo & Brand -->
+      <a href="#beranda" class="flex items-center gap-3 group">
+        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAozFWVroiwqa5xfHzppjJCV_smr9kQKyhYwyhv_IG1HX2vza5U1HOsxMDpaeoiDTL7MVNnQHGrpRhD4jVDYE-PY8AzZaEZNBJjSvqXi18XwhsNNmrhLcrJX76fJW6KR_ZtLKs4kNksEI2678137QaGTXNifNbpeRh2z3YJ5PrRgKbaibIy0ZZeH0xpTu12CQ7EPzfxCKR15JuG0VEt5LOaZ70RyKFr0mTnm7wj_eNFutYWx7Un6qwy" alt="Insyte Param Logo" class="w-10 h-10 rounded-xl object-contain shadow-xs transition-transform group-hover:scale-105">
+        <div>
+          <div class="font-extrabold text-base leading-tight text-brand-navy tracking-tight">INSYTE PARAM</div>
+          <div class="text-[10px] uppercase tracking-widest text-brand-steel font-bold">Teknologi</div>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <div id="desktop-nav" class="hidden md:flex items-center gap-8 text-sm font-medium">
+        <a class="nav-link active" href="#beranda">Beranda</a>
+        <a class="nav-link" href="#tentang-kami">Tentang Kami</a>
+        <a class="nav-link" href="#layanan">Layanan</a>
+        <a class="nav-link" href="#portofolio">Portofolio</a>
+        <a class="nav-link" href="#industri">Industri</a>
+        <a class="nav-link" href="#testimoni">Testimoni</a>
+        <a class="nav-link" href="#pricing">Paket</a>
+      </div>
+
+      <!-- Action Button & Mobile Toggle -->
+      <div class="flex items-center gap-4">
+        <a id="nav-cta-btn" class="hidden sm:inline-block px-6 py-2.5 bg-brand-steel hover:bg-brand-steel-hover text-white text-xs font-semibold rounded-full shadow-sm transition-all duration-200 transform hover:-translate-y-0.5" href="#kontak">
+          Konsultasi Gratis
+        </a>
+        <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg text-brand-navy hover:bg-brand-ice transition-colors" aria-label="Toggle Menu">
+          <i data-lucide="menu" class="w-6 h-6"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu Dropdown -->
+    <div id="mobile-menu" class="md:hidden max-w-7xl mx-auto px-2 pt-2 pb-4 space-y-2 border-t border-gray-100 mt-3">
+      <a class="mobile-nav-link active block px-3 py-2 rounded-lg text-sm" href="#beranda">Beranda</a>
+      <a class="mobile-nav-link block px-3 py-2 rounded-lg text-sm" href="#tentang-kami">Tentang Kami</a>
+      <a class="mobile-nav-link block px-3 py-2 rounded-lg text-sm" href="#layanan">Layanan</a>
+      <a class="mobile-nav-link block px-3 py-2 rounded-lg text-sm" href="#portofolio">Portofolio</a>
+      <a class="mobile-nav-link block px-3 py-2 rounded-lg text-sm" href="#industri">Industri</a>
+      <a class="mobile-nav-link block px-3 py-2 rounded-lg text-sm" href="#testimoni">Testimoni</a>
+      <a class="mobile-nav-link block px-3 py-2 rounded-lg text-sm" href="#pricing">Paket</a>
+      <a class="block px-3 py-2.5 text-center text-xs font-semibold rounded-full bg-brand-steel text-white mt-3 hover:bg-brand-steel-hover transition-colors shadow-sm" href="#kontak">Konsultasi Gratis</a>
+    </div>
+  </nav>
+
+  <!-- ==========================================
+       Main Content Container
+       ========================================== -->
+  <main class="w-full flex flex-col">
+
+    <!-- ==========================================
+         3. Hero Section
+         ========================================== -->
+    <section id="beranda" class="scroll-mt-24 px-6 lg:px-12 pt-8 pb-12 w-full">
+      <div class="max-w-7xl mx-auto bg-brand-navy rounded-[32px] p-8 md:p-14 text-white relative overflow-hidden shadow-xl">
+        <div class="grid grid-cols-12 gap-8 items-center relative z-10">
+          <div class="col-span-12 lg:col-span-7">
+            <h1 class="text-3xl md:text-5xl font-extrabold leading-[1.2] tracking-tight mb-6">
+              Kami Membangun <span class="text-brand-sky">Solusi Digital</span> yang Mendorong Pertumbuhan Bisnis.
+            </h1>
+            <p class="text-gray-300 text-sm md:text-base leading-relaxed max-w-xl font-normal">
+              Solusi web, aplikasi terintegrasi, dan rekayasa data untuk startup dan korporasi Indonesia yang siap berkembang di era digital modern.
+            </p>
+          </div>
+
+          <!-- Hero Image & Badge -->
+          <div class="col-span-12 lg:col-span-5 relative mt-6 lg:mt-0">
+            <div class="rounded-2xl overflow-hidden shadow-2xl border-2 border-white/10 relative group">
+              <img alt="Tim Insyte Param Kolaborasi" class="w-full h-64 md:h-80 object-cover transition-transform duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAVg2rLq8CztMYBvY97NOksMVIf24Gl5nShuR9Yh7ibrirtU22LrAUbsfizNdXNN5slma-6rUAXyGVSHGaKvjMahvHdYK6R5UkR2JJ96x2E-ZQ8QJpvBQjXjtZ9n_5Sggz6N1GyShU_q9Gr1zdhacegu71qTG1Hn7RyrQYmUfWwCW8eNycmZf__Iu7GWD0aSz-REGVpqCLv11Wv-agGnQJnJvW90W2kQk_5-8RIuW8">
+              <div class="absolute inset-0 bg-gradient-to-t from-brand-navy/60 to-transparent"></div>
+            </div>
+            <div class="absolute -bottom-4 -left-4 bg-white text-brand-navy px-4 py-3 rounded-2xl shadow-xl border border-brand-border flex items-center gap-3">
+              <div class="w-10 h-10 rounded-xl bg-brand-ice flex items-center justify-center text-brand-steel">
+                <i data-lucide="trending-up" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <div class="text-[11px] text-brand-slate font-medium">Pertumbuhan Klien</div>
+                <div class="text-sm font-bold text-brand-navy">+340% / Tahun</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         6. About Section
+         ========================================== -->
+    <section id="tentang-kami" class="scroll-mt-24 py-12 px-6 lg:px-12 w-full">
+      <div class="max-w-7xl mx-auto bg-white border border-brand-border rounded-3xl p-8 lg:p-12 shadow-sm">
+        <div class="grid grid-cols-12 gap-8 items-center">
+          <div class="col-span-12 lg:col-span-5 relative">
+            <div class="rounded-2xl overflow-hidden shadow-lg">
+              <img alt="Tentang Insyte Param" class="w-full h-72 object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBWvP1uUhl5Fb50HJ8oWwOa63pngp9-c_6ZE0FOTI2HwGRLkkdYplFQnz0Ill5mV9-hFxgkXVlsRfPWbwAPyQdp2HnBny6P8sDJtpZCbTvCwW5EIDHtKvZYqguXFKguNz5eDBTgp0erh_5_f8b5EAlm0WA48fHmihJZ0-ZC_-AjmSrw4p8qBfSOLrK0E0bawYWc4j6inf6O7QEVfTKcQLEKUUuVwHTjWsVPWIFNV0">
+            </div>
+            <div class="absolute -top-3 -left-3 bg-brand-steel text-white text-xs font-bold px-4 py-2 rounded-xl shadow-md flex items-center gap-2">
+              <i data-lucide="award" class="w-4 h-4"></i> 50+ Proyek Selesai
+            </div>
+          </div>
+          <div class="col-span-12 lg:col-span-7">
+            <span class="text-xs font-bold tracking-widest text-brand-steel uppercase">TENTANG KAMI</span>
+            <h2 class="text-2xl md:text-3xl font-extrabold text-brand-navy mt-1 mb-4 leading-tight">
+              Solusi Kreatif. Hasil Terukur.
+            </h2>
+            <p class="text-sm text-brand-slate leading-relaxed mb-6">
+              Kami adalah kolektif desainer, insinyur perangkat lunak, dan analis strategi yang berdedikasi menciptakan dampak nyata bagi ekosistem bisnis digital.
+            </p>
+            <div id="about-features-container" class="grid grid-cols-2 gap-3 text-sm font-semibold text-brand-navy">
+              <!-- Rendered dynamically from data.about.features -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         7. Dark Services Section (Dynamic Data)
+         ========================================== -->
+    <section id="layanan" class="scroll-mt-24 py-12 px-6 lg:px-12 w-full">
+      <div class="max-w-7xl mx-auto bg-brand-navy text-white rounded-[32px] p-8 md:p-12 text-center shadow-xl">
+        <span class="text-xs font-bold tracking-widest text-brand-sky uppercase">LAYANAN KAMI</span>
+        <h2 class="text-2xl md:text-3xl font-extrabold mt-2 mb-8">Semua yang Anda Butuhkan dalam Satu Atap</h2>
+        <div id="all-services-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8 text-left">
+          <!-- Rendered dynamically from data.allServices -->
+        </div>
+        <a href="#kontak" class="inline-block px-6 py-2.5 bg-brand-steel hover:bg-brand-steel-hover text-white text-xs font-semibold rounded-full transition-colors">
+          Konsultasikan Layanan
+        </a>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         8. Portfolio Section (Dynamic Data)
+         ========================================== -->
+    <section id="portofolio" class="scroll-mt-24 py-12 px-6 lg:px-12 w-full">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-6">
+          <span class="text-xs font-bold tracking-widest text-brand-steel uppercase">PORTOFOLIO</span>
+          <h2 class="text-2xl md:text-3xl font-extrabold text-brand-navy mt-1">Karya yang Kami Banggakan</h2>
+        </div>
+
+        <!-- Filter Pills -->
+        <div id="portfolio-tabs-container" class="flex flex-wrap items-center justify-center gap-2.5 mb-8">
+          <!-- Rendered dynamically from data.portfolio.categories -->
+        </div>
+
+        <!-- 3x2 Grid -->
+        <div id="portfolio-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+          <!-- Rendered dynamically from data.portfolio.items -->
+        </div>
+
+        <div class="text-center">
+          <a href="#portofolio" class="inline-block px-6 py-2.5 border border-brand-border text-brand-navy hover:bg-brand-ice font-bold text-xs rounded-xl transition-colors">
+            Lihat Proyek Lainnya
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         9. Team Section (Dynamic Data)
+         ========================================== -->
+    <section id="tim" class="scroll-mt-24 py-12 px-6 lg:px-12 w-full border-t border-brand-border bg-gray-100/40">
+      <div class="max-w-7xl mx-auto text-center">
+        <span class="text-xs font-bold tracking-widest text-brand-steel uppercase">TIM KAMI</span>
+        <h2 class="text-2xl md:text-3xl font-extrabold text-brand-navy mt-1 mb-8">Orang-Orang di Balik Karya Kami</h2>
+        <div id="team-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Rendered dynamically from data.team -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         10. Smart Solutions / Mengapa Memilih Kami
+         ========================================== -->
+    <section class="py-12 px-6 lg:px-12 w-full">
+      <div class="max-w-7xl mx-auto bg-brand-ice rounded-[32px] p-8 md:p-12 border border-brand-border shadow-sm">
+        <div class="grid grid-cols-12 gap-8 items-center">
+          <div class="col-span-12 lg:col-span-5">
+            <div class="rounded-2xl overflow-hidden shadow-md">
+              <img alt="Insyte Param Tim Ahli" class="w-full h-64 md:h-80 object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkWPY0cYE0nEkVu7oyA5QFbV_jYZIVUpDJTAJZUliX0_avGPAElQCH8NhyyFwXP8SW5Yxu1D4kVQ-ME4x3E_a-XRyuDI93GnckGfrOi3ypL76KLcRMdB_-jdUyQv1MU9SSDlt0TJJ6aY-kJqgDnvzXEHoOohsx3ItQ-u1cQeYSLuxKw01kzUI8WLqgjS0zMyCZ4lHaUIC1DUzEFUqhU8YZqwS9GcZ3Se7zeFowH1U">
+            </div>
+          </div>
+          <div class="col-span-12 lg:col-span-7">
+            <span class="text-xs font-bold tracking-widest text-brand-steel uppercase">MENGAPA MEMILIH KAMI</span>
+            <h2 class="text-2xl md:text-3xl font-extrabold text-brand-navy mt-1 mb-4 leading-tight">
+              Solusi Cerdas untuk Bisnis Cerdas
+            </h2>
+            <p class="text-sm text-brand-slate leading-relaxed mb-6">
+              Kami menggabungkan ketelitian rekayasa kode, desain estetis, dan metodologi agile agar setiap solusi teknologi tepat sasaran dan berdaya saing global.
+            </p>
+            <div id="why-us-checklist-container" class="space-y-3 mb-6 text-sm font-semibold text-brand-navy">
+              <!-- Rendered dynamically from data.whyUs.points -->
+            </div>
+            <p class="text-sm font-bold text-brand-navy tracking-tight">
+              Mari Bekerja Sama
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         10b. Section Gaya Visual & Industri (#industri)
+         ========================================================================== -->
+    <section id="industri" class="scroll-mt-24 pt-16 lg:pt-24 pb-4 bg-white relative w-full overflow-hidden">
+      <div class="max-w-7xl mx-auto px-6 lg:px-12">
+        
+        <!-- Judul Tengah & Subjudul Deskripsi -->
+        <div class="text-center max-w-3xl mx-auto mb-14 lg:mb-16">
+          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#0B2447] tracking-tight leading-tight">
+            Kami siap membantu menyelesaikan<br class="hidden sm:inline"> tantangan digital unik bisnis Anda.
+          </h2>
+          <p class="mt-4 text-sm sm:text-base text-[#475569] leading-relaxed">
+            Kami terbuka bekerja sama dengan organisasi dari berbagai industri, ukuran, dan kebutuhan teknologi.
+          </p>
+        </div>
+
+        <!-- Tiga Kolom Sejajar: Desktop 3 Kolom, Tablet 2 Kolom, HP 1 Kolom -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
+          
+          <!-- Kartu 1: Industri yang Kami Layani -->
+          <div class="industri-card p-7 sm:p-8 flex flex-col justify-between">
+            <div>
+              <!-- Ikon Besar Penanda Kelompok -->
+              <div class="group-icon-badge">
+                <i data-lucide="building-2" class="w-7 h-7 text-[#4A86C5]"></i>
+              </div>
+              <h3 class="text-xl font-bold text-[#0B2447] tracking-tight mb-6">
+                Industri yang Kami Layani
+              </h3>
+
+              <!-- Daftar Item Vertikal -->
+              <ul class="space-y-3.5">
+                <li class="industri-item flex items-center gap-3.5 cursor-default">
+                  <div class="item-icon-box">
+                    <i data-lucide="shopping-bag" class="w-4 h-4 text-[#4A86C5]"></i>
+                  </div>
+                  <span class="text-sm font-semibold text-[#0B2447]">E-Commerce &amp; Retail</span>
+                </li>
+                <li class="industri-item flex items-center gap-3.5 cursor-default">
+                  <div class="item-icon-box">
+                    <i data-lucide="graduation-cap" class="w-4 h-4 text-[#4A86C5]"></i>
+                  </div>
+                  <span class="text-sm font-semibold text-[#0B2447]">Pendidikan</span>
+                </li>
+                <li class="industri-item flex items-center gap-3.5 cursor-default">
+                  <div class="item-icon-box">
+                    <i data-lucide="heart-pulse" class="w-4 h-4 text-[#4A86C5]"></i>
+                  </div>
+                  <span class="text-sm font-semibold text-[#0B2447]">Kesehatan</span>
+                </li>
+                <li class="industri-item flex items-center gap-3.5 cursor-default">
+                  <div class="item-icon-box">
+                    <i data-lucide="utensils" class="w-4 h-4 text-[#4A86C5]"></i>
+                  </div>
+                  <span class="text-sm font-semibold text-[#0B2447]">Food &amp; Beverage</span>
+                </li>
+                <li class="industri-item flex items-center gap-3.5 cursor-default">
+                  <div class="item-icon-box">
+                    <i data-lucide="truck" class="w-4 h-4 text-[#4A86C5]"></i>
+                  </div>
+                  <span class="text-sm font-semibold text-[#0B2447]">Logistik</span>
+                </li>
+                <li class="industri-item flex items-center gap-3.5 cursor-default">
+                  <div class="item-icon-box">
+                    <i data-lucide="landmark" class="w-4 h-4 text-[#4A86C5]"></i>
+                  </div>
+                  <span class="text-sm font-semibold text-[#0B2447]">Keuangan</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Kartu 2: Skala Bisnis -->
+          <div class="industri-card p-7 sm:p-8 flex flex-col justify-between">
+            <div>
+              <!-- Ikon Besar Penanda Kelompok -->
+              <div class="group-icon-badge">
+                <i data-lucide="trending-up" class="w-7 h-7 text-[#4A86C5]"></i>
+              </div>
+              <h3 class="text-xl font-bold text-[#0B2447] tracking-tight mb-6">
+                Skala Bisnis
+              </h3>
+
+              <!-- Daftar Item Vertikal -->
+              <ul class="space-y-3.5">
+                <li class="industri-item flex items-center gap-3.5 cursor-default">
+                  <div class="item-icon-box">
+                    <i data-lucide="rocket" class="w-4 h-4 text-[#4A86C5]"></i>
+                  </div>
+                  <span class="text-sm font-semibold text-[#0B2447]">Startup</span>
+                </li>
+                <li class="industri-item flex items-center gap-3.5 cursor-default">
+                  <div class="item-icon-box">
+                    <i data-lucide="store" class="w-4 h-4 text-[#4A86C5]"></i>
+                  </div>
+                  <span class="text-sm font-semibold text-[#0B2447]">UMKM</span>
+                </li>
+                <li class="industri-item flex items-center gap-3.5 cursor-default">
+                  <div class="item-icon-box">
+                    <i data-lucide="building" class="w-4 h-4 text-[#4A86C5]"></i>
+                  </div>
+                  <span class="text-sm font-semibold text-[#0B2447]">Perusahaan Menengah</span>
+                </li>
+                <li class="industri-item flex items-center gap-3.5 cursor-default">
+                  <div class="item-icon-box">
+                    <i data-lucide="shield-check" class="w-4 h-4 text-[#4A86C5]"></i>
+                  </div>
+                  <span class="text-sm font-semibold text-[#0B2447]">Korporasi</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Kartu 3: Fungsi Bisnis yang Kami Optimalkan -->
+          <div class="industri-card p-7 sm:p-8 flex flex-col justify-between md:col-span-2 lg:col-span-1 md:max-w-md md:mx-auto lg:max-w-none w-full">
+            <div>
+              <!-- Ikon Besar Penanda Kelompok -->
+              <div class="group-icon-badge">
+                <i data-lucide="sliders-horizontal" class="w-7 h-7 text-[#4A86C5]"></i>
+              </div>
+              <h3 class="text-xl font-bold text-[#0B2447] tracking-tight mb-6">
+                Fungsi Bisnis yang Kami Optimalkan
+              </h3>
+
+              <!-- Daftar Item Vertikal -->
+              <ul class="space-y-3.5">
+                <li class="industri-item flex items-center gap-3.5 cursor-default">
+                  <div class="item-icon-box">
+                    <i data-lucide="pie-chart" class="w-4 h-4 text-[#4A86C5]"></i>
+                  </div>
+                  <span class="text-sm font-semibold text-[#0B2447]">Keuangan &amp; Akuntansi</span>
+                </li>
+                <li class="industri-item flex items-center gap-3.5 cursor-default">
+                  <div class="item-icon-box">
+                    <i data-lucide="cog" class="w-4 h-4 text-[#4A86C5]"></i>
+                  </div>
+                  <span class="text-sm font-semibold text-[#0B2447]">Operasional</span>
+                </li>
+                <li class="industri-item flex items-center gap-3.5 cursor-default">
+                  <div class="item-icon-box">
+                    <i data-lucide="monitor" class="w-4 h-4 text-[#4A86C5]"></i>
+                  </div>
+                  <span class="text-sm font-semibold text-[#0B2447]">IT</span>
+                </li>
+                <li class="industri-item flex items-center gap-3.5 cursor-default">
+                  <div class="item-icon-box">
+                    <i data-lucide="megaphone" class="w-4 h-4 text-[#4A86C5]"></i>
+                  </div>
+                  <span class="text-sm font-semibold text-[#0B2447]">Pemasaran &amp; Penjualan</span>
+                </li>
+                <li class="industri-item flex items-center gap-3.5 cursor-default">
+                  <div class="item-icon-box">
+                    <i data-lucide="users" class="w-4 h-4 text-[#4A86C5]"></i>
+                  </div>
+                  <span class="text-sm font-semibold text-[#0B2447]">SDM</span>
+                </li>
+                <li class="industri-item flex items-center gap-3.5 cursor-default">
+                  <div class="item-icon-box">
+                    <i data-lucide="compass" class="w-4 h-4 text-[#4A86C5]"></i>
+                  </div>
+                  <span class="text-sm font-semibold text-[#0B2447]">Strategi Bisnis</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Kurva Gelombang Tipis Pemisah ke Section Berikutnya -->
+      <div class="wave-divider mt-16 sm:mt-20">
+        <svg viewBox="0 0 1440 70" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+          <path d="M0,35 C360,65 540,5 720,35 C900,65 1080,5 1440,35" stroke="#E2E8F0" stroke-width="1.5" fill="none"/>
+          <path d="M0,35 C360,65 540,5 720,35 C900,65 1080,5 1440,35 L1440,70 L0,70 Z" fill="#F8FAFC" opacity="0.6"/>
+        </svg>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         11. Testimonials Section (Dynamic Data)
+         ========================================== -->
+    <section id="testimoni" class="scroll-mt-24 py-12 px-6 lg:px-12 w-full text-center">
+      <div class="max-w-4xl mx-auto">
+        <span class="text-xs font-bold tracking-widest text-brand-steel uppercase">TESTIMONI</span>
+        <h2 class="text-2xl md:text-3xl font-extrabold text-brand-navy mt-1 mb-8">Kata Klien Kami</h2>
+        <div id="testimonials-container" class="bg-white border border-brand-border rounded-3xl p-8 md:p-12 shadow-sm relative">
+          <!-- Rendered dynamically from data.testimonials -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         12. Pricing Section (Dynamic Data)
+         ========================================== -->
+    <section id="pricing" class="scroll-mt-24 py-12 px-6 lg:px-12 w-full">
+      <div class="max-w-7xl mx-auto bg-brand-navy rounded-[32px] p-8 md:p-14 text-white text-center shadow-xl">
+        <span class="text-xs font-bold tracking-widest text-brand-sky uppercase">PAKET BIAYA INVESTASI</span>
+        <h2 class="text-2xl md:text-3xl font-extrabold mt-1 mb-4">Paket Fleksibel untuk Setiap Bisnis</h2>
+
+        <!-- Monthly/Yearly Toggle -->
+        <div class="inline-flex items-center bg-white/10 p-1.5 rounded-full text-xs font-semibold mb-8">
+          <button id="billing-monthly" class="pricing-btn active px-5 py-1.5 rounded-full text-white shadow">Bulanan</button>
+          <button id="billing-yearly" class="pricing-btn px-5 py-1.5 rounded-full text-gray-300 hover:text-white transition-colors">Tahunan <span class="text-xs text-brand-sky ml-1 font-bold">-20%</span></button>
+        </div>
+
+        <!-- Cards Row -->
+        <div id="pricing-cards-container" class="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
+          <!-- Rendered dynamically from data.pricing.plans -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         13. FAQ & Project Consultation Card (Dynamic Data)
+         ========================================== -->
+    <section id="faq" class="scroll-mt-24 py-12 px-6 lg:px-12 w-full">
+      <div class="max-w-7xl mx-auto grid grid-cols-12 gap-8 items-start">
+        <!-- FAQ Left Column -->
+        <div class="col-span-12 lg:col-span-7 space-y-3">
+          <h3 class="text-base font-bold text-brand-navy uppercase tracking-wider mb-4">Pertanyaan Populer (FAQ)</h3>
+
+          <div id="faq-accordion-container" class="space-y-3">
+            <!-- Rendered dynamically from data.faq -->
+          </div>
+        </div>
+
+        <!-- CTA Card Right Column -->
+        <div id="kontak" class="scroll-mt-24 col-span-12 lg:col-span-5 bg-brand-navy rounded-3xl p-8 text-white shadow-xl flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center text-brand-sky mb-5">
+              <i data-lucide="message-square" class="w-6 h-6"></i>
+            </div>
+            <h3 class="text-xl font-extrabold mb-2">Punya Proyek di Pikiran Anda?</h3>
+            <p class="text-xs md:text-sm text-gray-300 leading-relaxed mb-6">
+              Mari wujudkan visi digital bisnis Anda bersama tim rekayasa kami.
+            </p>
+            <div class="space-y-3 text-xs md:text-sm text-gray-200 mb-8">
+              <div class="flex items-center gap-2.5">
+                <span class="text-brand-sky font-bold">✓</span> Konsultasi Kebutuhan
+              </div>
+              <div class="flex items-center gap-2.5">
+                <span class="text-brand-sky font-bold">✓</span> Estimasi Biaya Transparan
+              </div>
+              <div class="flex items-center gap-2.5">
+                <span class="text-brand-sky font-bold">✓</span> Desain Prototipe Gratis
+              </div>
+            </div>
+          </div>
+          <a href="https://wa.me/6281234567890?text=Halo%20Insyte%20Param%2C%20saya%20ingin%20konsultasi%20mengenai%20proyek%20digital." target="_blank" rel="noopener noreferrer" class="w-full py-3.5 bg-brand-steel hover:bg-brand-steel-hover text-white text-xs font-bold rounded-xl transition-colors text-center inline-block shadow">
+            Dapatkan Penawaran
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         14. Newsletter Banner
+         ========================================== -->
+    <section class="py-8 px-6 lg:px-12 w-full">
+      <div class="max-w-7xl mx-auto bg-brand-steel rounded-[32px] p-8 md:p-12 text-white overflow-hidden relative shadow-lg">
+        <div class="grid grid-cols-12 gap-8 items-center">
+          <div class="col-span-12 md:col-span-7">
+            <h3 class="text-xl md:text-2xl font-extrabold mb-2">Dapatkan Tips &amp; Insight Terbaru</h3>
+            <p class="text-xs md:text-sm text-blue-100 mb-6 leading-relaxed max-w-lg">
+              Berlangganan buletin teknologi dan strategi bisnis kami mingguan langsung ke email Anda.
+            </p>
+            <form id="newsletter-form" class="flex flex-col sm:flex-row gap-3 max-w-md">
+              <input class="px-4 py-2.5 text-xs text-brand-navy rounded-xl w-full focus:outline-none focus:ring-2 focus:ring-brand-navy border-none" placeholder="Masukkan email Anda" type="email" required>
+              <button type="submit" class="px-6 py-2.5 bg-brand-navy hover:bg-brand-logonavy text-white text-xs font-semibold rounded-xl shrink-0 transition-colors">
+                Langganan
+              </button>
+            </form>
+          </div>
+          <div class="col-span-12 md:col-span-5">
+            <img alt="Ruang Kerja Modern" class="rounded-2xl h-44 w-full object-cover shadow-md" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB5z3vuIKOB5dmQ12KjKtQrjz0fxOaQP7VFnIIM6RHYSmVGIXCsUOyQ063UakwxJeAwD4aYBvfB0xagWGEyHwOuK5qzj20i1DdJhjTFAGhaIkfuSq2rSkmydUT42Rda9TOMeLuEqtQdbMByTJddFjwOS80JpAq_AFfQkGDRltOmpLhCrbu2hlXioHlFGwDCpzoA_drnclR9OmO5WkMgBsOs2GnUjqnTQeOF2Ifx2Ao">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         15. Key Metrics / Stats Row (Dynamic Data)
+         ========================================== -->
+    <section class="py-8 px-6 lg:px-12 w-full">
+      <div class="max-w-7xl mx-auto bg-white border border-brand-border rounded-2xl p-6 shadow-sm">
+        <div id="stats-container" class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center divide-y md:divide-y-0 md:divide-x divide-gray-100">
+          <!-- Rendered dynamically from data.stats -->
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==========================================
+       16. Full Dark Footer (Dynamic Data)
+       ========================================== -->
+  <footer class="mt-16 bg-brand-navy text-white px-6 lg:px-12 py-12 text-xs border-t border-brand-navy w-full">
+    <div class="max-w-7xl mx-auto grid grid-cols-12 gap-8 mb-12">
+      <!-- Col 1: Bio & Branding -->
+      <div class="col-span-12 lg:col-span-5">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="bg-white rounded-xl p-2 w-12 h-12 flex items-center justify-center shadow-md">
+            <img alt="Insyte Param Teknologi Logo" class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmMbMIuWSVv_APA2mqOQeLMEERuy2C7B19OnlH_pcN7NnNRSdAWbY2hFc7Obwn2-F5r4bW5mHSwqZzlPV_A5t6nNKU8Um2LcwoNAoYsCJ0IxkbaDLX4p90MCv6QfRcm907ASe45IcL2sjL_jWTkG9TDFNceXtNzt5kalEqZ_OpGHp2kXKXOD13Uo8lshjHGwZoe5a2c9XHQ58YciG2aJjWaJY69iv9EyoXrGvzJHOSIMm0GCtKSAYk">
+          </div>
+          <div>
+            <div class="font-extrabold text-base leading-tight text-white tracking-tight">INSYTE PARAM</div>
+            <div class="text-[10px] uppercase tracking-widest text-brand-sky font-bold">Teknologi</div>
+          </div>
+        </div>
+        <p class="text-xs text-gray-300 leading-relaxed mb-6 max-w-sm">
+          Membangun fondasi digital tangguh, modern, dan memberikan keunggulan kompetitif bagi setiap perusahaan rekanan kami di Indonesia.
+        </p>
+        <div class="flex gap-3">
+          <a aria-label="LinkedIn" class="w-9 h-9 rounded-full bg-white/10 hover:bg-brand-steel text-gray-300 hover:text-white flex items-center justify-center transition-colors border border-white/10 shadow-xs" href="#">
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"></path></svg>
+          </a>
+          <a aria-label="Instagram" class="w-9 h-9 rounded-full bg-white/10 hover:bg-brand-steel text-gray-300 hover:text-white flex items-center justify-center transition-colors border border-white/10 shadow-xs" href="#">
+            <svg class="w-4 h-4 fill-none stroke-current stroke-2" viewBox="0 0 24 24"><rect height="20" rx="5" ry="5" width="20" x="2" y="2"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg>
+          </a>
+          <a aria-label="Twitter / X" class="w-9 h-9 rounded-full bg-white/10 hover:bg-brand-steel text-gray-300 hover:text-white flex items-center justify-center transition-colors border border-white/10 shadow-xs" href="#">
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
+          </a>
+          <a aria-label="YouTube" class="w-9 h-9 rounded-full bg-white/10 hover:bg-brand-steel text-gray-300 hover:text-white flex items-center justify-center transition-colors border border-white/10 shadow-xs" href="#">
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Col 2: Quick Links -->
+      <div class="col-span-6 sm:col-span-3 lg:col-span-2">
+        <h5 class="font-bold text-xs uppercase tracking-wider text-brand-sky mb-4">Tautan</h5>
+        <ul id="footer-quick-links" class="space-y-2 text-xs text-gray-300">
+          <!-- Rendered dynamically from data.footerLinks.quickLinks -->
+        </ul>
+      </div>
+
+      <!-- Col 3: Services -->
+      <div class="col-span-6 sm:col-span-3 lg:col-span-2">
+        <h5 class="font-bold text-xs uppercase tracking-wider text-brand-sky mb-4">Layanan</h5>
+        <ul id="footer-services-links" class="space-y-2 text-xs text-gray-300">
+          <!-- Rendered dynamically from data.footerLinks.services -->
+        </ul>
+      </div>
+
+      <!-- Col 4: Contact Information -->
+      <div class="col-span-12 sm:col-span-6 lg:col-span-3">
+        <h5 class="font-bold text-xs uppercase tracking-wider text-brand-sky mb-4">Hubungi Kami</h5>
+        <ul class="space-y-3 text-xs text-gray-300">
+          <li class="flex items-center gap-2.5">
+            <i data-lucide="phone" class="w-4 h-4 text-brand-sky shrink-0"></i>
+            +62 812-3456-7890
+          </li>
+          <li class="flex items-center gap-2.5">
+            <i data-lucide="mail" class="w-4 h-4 text-brand-sky shrink-0"></i>
+            consultinginsyte@gmail.com
+          </li>
+          <li class="flex items-start gap-2.5">
+            <i data-lucide="map-pin" class="w-4 h-4 text-brand-sky shrink-0 mt-0.5"></i>
+            Jl. Jendral Sudirman Kav. 52, Jakarta Selatan, Indonesia
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bottom Copyright & Back to Top -->
+    <div class="max-w-7xl mx-auto border-t border-white/10 pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-400 gap-4">
+      <div>
+        © 2026 PT Insyte Param Teknologi. Hak cipta dilindungi undang-undang.
+      </div>
+      <div class="flex items-center gap-6">
+        <a class="hover:text-white transition-colors" href="#">Kebijakan Privasi</a>
+        <a class="hover:text-white transition-colors" href="#">Syarat &amp; Ketentuan</a>
+        <button id="scroll-to-top" class="w-8 h-8 rounded-full bg-brand-steel flex items-center justify-center text-white shadow hover:bg-brand-steel-hover transition-all" title="Kembali ke atas">
+          <i data-lucide="arrow-up" class="w-4 h-4"></i>
+        </button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Centralized Site Data -->
+  <script src="js/data.js"></script>
+
+  <!-- Dynamic Renderer & Interactions -->
+  <script src="js/script.js" defer></script>
+</body>
+</html>
